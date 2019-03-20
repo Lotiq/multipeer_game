@@ -25,6 +25,11 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         
         // Set delegate for input field.
         inputTextField.delegate = self
+        
+        // Setting for text view to allow auto scroll to bottom.
+        textView.layoutManager.allowsNonContiguousLayout = false
+        
+        // Prompt user to input username and start P2P communication.
         restart()
     }
     
@@ -36,8 +41,8 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         // Create alert popup.
         alert = UIAlertController(title: "Enter your username", message: nil, preferredStyle: .alert)
         alert.addTextField(configurationHandler: { textField in
-             textField.placeholder = "Username..."
-             textField.addTarget(self, action: #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
+            textField.placeholder = "Username..."
+            textField.addTarget(self, action: #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
         })
         
         // Create action on OK press.
@@ -61,10 +66,10 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         self.present(alert, animated: true)
     }
     
+    // Disable okay button when text field is empty.
     @objc func alertTextFieldDidChange(_ sender: UITextField) {
         alert.actions[0].isEnabled = sender.text!.count > 0
     }
-
     func startMultipeerService(displayName: String) {
         self.multipeerService = nil
         self.multipeerService = MultipeerService(dispayName: displayName)
