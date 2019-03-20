@@ -25,7 +25,13 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         
         // Set delegate for input field.
         inputTextField.delegate = self
+//        restart()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+    
         restart()
+        
     }
     
     // Show popup for entering username, P2P servic will start when name entered.
