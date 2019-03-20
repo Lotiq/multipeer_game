@@ -116,7 +116,7 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         var newResult:[String] = []
         for (index,subItem) in result.enumerated(){
             var item = String(subItem)
-                    if translations[item.lowercased()] != nil || index != 0 {
+                    if translations[item.lowercased()] != nil && index != 0 {
                         newResult.append(translations[item.lowercased()]!)
                     } else if index == 0 {
                         newResult.append(item)
