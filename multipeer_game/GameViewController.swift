@@ -110,15 +110,20 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
     func processText(_ string: String) {
         
         // Construct the text that will be in the field if this change is accepted
-        let result = string.split(separator: " ")
+        let updatedString = string.replacingOccurrences(of: ",", with: "")
+        let result = updatedString.split(separator: " ")
+        
         var newResult:[String] = []
-        for subItem in result {
+        for (index,subItem) in result.enumerated(){
             let item = String(subItem)
-                if translations[item] != nil {
-                    newResult.append(translations[item]!)
-                } else {
-                    newResult.append(randomEmoji())
-                }
+                    if translations[item.lowercased()] != nil {
+                        newResult.append(translations[item.lowercased()]!)
+                    } else if index == 0{
+                        newResult.append(item)
+                    } else {
+                        newResult.append(randomEmoji())
+                    }
+            
         }
         
         let resultString = newResult.joined(separator: "")
