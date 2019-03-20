@@ -115,15 +115,22 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         
         var newResult:[String] = []
         for (index,subItem) in result.enumerated(){
-            let item = String(subItem)
+            var item = String(subItem)
                     if translations[item.lowercased()] != nil {
                         newResult.append(translations[item.lowercased()]!)
-                    } else if index == 0{
+                    } else if index == 0 {
                         newResult.append(item)
+                    } else if item.contains("?"){
+                        item = item.replacingOccurrences(of: "?", with: "")
+                        if translations[item.lowercased()] != nil {
+                            newResult.append(translations[item.lowercased()]!)
+                        } else {
+                            newResult.append(randomEmoji())
+                        }
+                        newResult.append("?")
                     } else {
                         newResult.append(randomEmoji())
                     }
-            
         }
         
         let resultString = newResult.joined(separator: "")
@@ -152,7 +159,8 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
     }
     
     func randomEmoji()->String{
-        let range = [UInt32](0x1F601...0x1F64F)
+        let rangeArray = [[UInt32](0x1F601...0x1F64F),[UInt32](0x2702...0x27B0),[UInt32](0x1F680...0x1F6C0),[UInt32](0x1F170...0x1F251)]
+        let range = rangeArray.randomElement()!
         let ascii = range[Int(drand48() * (Double(range.count)))]
         let emoji = UnicodeScalar(ascii)?.description
         return emoji!
