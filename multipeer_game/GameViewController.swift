@@ -119,10 +119,6 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         restart()
     }
     
-    @IBAction func didTapClearButton(_ sender: UIBarButtonItem) {
-        textView.text = ""
-    }
-    
     //////////////////////////////////////////////////////////////////////////////////////////////
     // MARK: - MultipeerServiceDelegate
     

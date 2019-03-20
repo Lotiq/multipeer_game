@@ -8,4 +8,4 @@
 
 import Foundation
 
-let translations = ["heart":"❤️", "fish":"🐟", "bird" : "🐦", "frog" : "\u{E531}","bear" : "\u{E527}", "dog" : "\u{E052}", "cat" : "\u{E04F}"]
+let translations = ["heart":"❤️", "fish":"🐟", "bird" : "🐦", "frog" : "🐸","us" : "🇺🇸", "dog" : "🐶", "cat" : "🐱", "i":"ℹ", "mobile":"📱","lab":"👩‍🔬" , "like":"👍", "love":"❤️"]

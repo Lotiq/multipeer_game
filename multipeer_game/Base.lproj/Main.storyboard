@@ -10,11 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="multipeer_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="multipeer_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +23,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="jW3-5j-twe">
-                                        <barButtonItem key="rightBarButtonItem" title="Restart" id="FO9-cF-pum"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Restart" id="FO9-cF-pum">
+                                            <connections>
+                                                <action selector="didTapRestartButton:" destination="BYZ-38-t0r" id="8vd-kg-4Nh"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -41,6 +44,9 @@
                                         <rect key="frame" x="350" y="13" width="48" height="30"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="didTapSendButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mPd-DO-Wxi"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,7 +86,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="3uT-nV-Hqt" id="zgH-fi-sGh"/>
+                        <outlet property="textView" destination="oLX-IE-Wjo" id="LRf-iI-h1D"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="CUs-Yz-jaw"/>
             </objects>
             <point key="canvasLocation" x="133.33333333333334" y="133.92857142857142"/>
