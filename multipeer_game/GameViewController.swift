@@ -107,11 +107,11 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         var newResult:[String] = []
         for subItem in result {
             let item = String(subItem)
-            if translations[item] != nil {
-                newResult.append(translations[item]!)
-            } else {
-                newResult.append(randomEmoji())
-            }
+                if translations[item] != nil {
+                    newResult.append(translations[item]!)
+                } else {
+                    newResult.append(randomEmoji())
+                }
         }
         
         let resultString = newResult.joined(separator: "")
