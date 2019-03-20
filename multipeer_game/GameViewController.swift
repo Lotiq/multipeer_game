@@ -25,12 +25,19 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         
         // Set delegate for input field.
         inputTextField.delegate = self
+
         
         // Setting for text view to allow auto scroll to bottom.
         textView.layoutManager.allowsNonContiguousLayout = false
         
         // Prompt user to input username and start P2P communication.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+    
+
         restart()
+        
     }
     
     // Show popup for entering username, P2P servic will start when name entered.
