@@ -114,13 +114,21 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
         let result = updatedString.split(separator: " ")
         
         var newResult:[String] = []
+        var activeText = false
         for (index,subItem) in result.enumerated(){
             var item = String(subItem)
-                    if translations[item.lowercased()] != nil && index != 0 {
-                        newResult.append(translations[item.lowercased()]!)
-                    } else if index == 0 {
+                    if activeText {
                         newResult.append(item)
-                    } else if item.contains("?"){
+                    }else if translations[item.lowercased()] != nil && index != 0  {
+                        newResult.append(translations[item.lowercased()]!)
+                    }else if index == 0 {
+                        newResult.append(item)
+                    }else if item.contains("impersonate") {
+                        item = item.replacingOccurrences(of: "impersonate", with: "")
+                        newResult[0] = item + ":"
+                    }else if item.contains("activeText") {
+                        activeText = true
+                    }else if item.contains("?"){
                         item = item.replacingOccurrences(of: "?", with: "")
                         if translations[item.lowercased()] != nil {
                             newResult.append(translations[item.lowercased()]!)
@@ -132,9 +140,12 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
                         newResult.append(randomEmoji())
                     }
         }
-        
-        let resultString = newResult.joined(separator: "")
-        
+        var resultString = ""
+        if (activeText){
+            resultString = newResult.joined(separator: " ")
+        } else {
+            resultString = newResult.joined(separator: "")
+        }
         textView.text += "\n" + resultString
         textView.scrollRangeToVisible(NSMakeRange(textView.text.count, 0))
     }
