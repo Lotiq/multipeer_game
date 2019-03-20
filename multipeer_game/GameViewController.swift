@@ -31,13 +31,13 @@ class GameViewController: UIViewController, MultipeerServiceDelegate, UITextFiel
     // Show popup for entering username, P2P servic will start when name entered.
     func restart() {
         // Clear text view.
-        //textView.text = ""
+        textView.text = ""
         
         // Create alert popup.
         alert = UIAlertController(title: "Enter your username", message: nil, preferredStyle: .alert)
         alert.addTextField(configurationHandler: { textField in
-            // textField.placeholder = "Username..."
-            // textField.addTarget(self, action: #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
+             textField.placeholder = "Username..."
+             textField.addTarget(self, action: #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
         })
         
         // Create action on OK press.
