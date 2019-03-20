@@ -8,6 +8,12 @@
 
 import UIKit
 
+////////////////////////////////////////////////////////////////////
+// NOTE: Update to unique name.
+// Service type must be a unique string, at most 15 characters long
+// and can contain only ASCII lowercase letters, numbers and hyphens.
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
