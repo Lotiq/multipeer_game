@@ -87,6 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="inputTextField" destination="3uT-nV-Hqt" id="zgH-fi-sGh"/>
+                        <outlet property="navigationBar" destination="WBf-Aa-ZUS" id="LO2-ou-ei9"/>
                         <outlet property="textView" destination="NYc-CH-FWy" id="e4g-Di-W0D"/>
                     </connections>
                 </viewController>
